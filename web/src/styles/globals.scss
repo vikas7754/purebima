@@ -130,13 +130,13 @@ input:-webkit-autofill:active {
   letter-spacing: 2px;
   color: #fff;
   overflow: hidden;
-  box-shadow: 0 0 5px #f7781e;
+  box-shadow: 0 0 5px #1e3bf7;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   &:hover {
-    background: rgb(255, 137, 27);
-    box-shadow: 0 0 10px 3px rgba(255, 156, 27, 0.815);
+    background: rgb(11, 19, 255);
+    box-shadow: 0 0 10px 3px rgba(27, 50, 255, 0.5);
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
@@ -191,10 +191,10 @@ input:-webkit-autofill:active {
   transition: all 0.2s ease-in;
   outline: none;
   text-decoration: none;
-  box-shadow: 0 0 4px 1px #ff4c88a6, 0 0 2px 1px #f7781e9c;
+  box-shadow: 0 0 4px 1px #674cffa6, 0 0 2px 1px #301ef79c;
   &:hover {
-    background: rgb(255, 137, 27);
-    box-shadow: 0 0 10px 3px rgba(255, 156, 27, 0.815);
+    background: rgb(30, 14, 255);
+    box-shadow: 0 0 10px 3px rgba(27, 65, 255, 0.5);
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
