@@ -27,7 +27,7 @@ function error404() {
               <FontAwesomeIcon icon={faHome} /> Home
             </Link>
             <button className="btn-secondary" onClick={goBack}>
-              <FontAwesomeIcon icon={faBackward} /> Back To Previous Page
+              <FontAwesomeIcon icon={faBackward} /> Back
             </button>
           </div>
         </div>
