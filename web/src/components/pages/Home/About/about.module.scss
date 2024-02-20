@@ -1,3 +1,7 @@
+.about {
+  width: 100%;
+  background: url("/images/bg1.png") no-repeat bottom center/cover;
+}
 .container {
   display: flex;
   position: relative;
@@ -5,7 +9,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 30px 20px;
-  background: url("/images/bg1.png") no-repeat bottom center/cover;
+
   h2 {
     color: var(--text);
     font-family: "Poppins", Sans-serif;
