@@ -1,5 +1,7 @@
+import HealthInsurance from "@/components/pages/HealthInsurance";
+
 function page() {
-  return <div>page</div>;
+  return <HealthInsurance />;
 }
 
 export default page;

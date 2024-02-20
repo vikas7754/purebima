@@ -1,5 +1,7 @@
+import TwoWheelerInsurance from "@/components/pages/TwoWheelerInsurance";
+
 function page() {
-  return <div>page</div>;
+  return <TwoWheelerInsurance />;
 }
 
 export default page;

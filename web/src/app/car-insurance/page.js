@@ -1,5 +1,7 @@
+import CarInsurance from "@/components/pages/CarInsurance";
+
 function page() {
-  return <div>page</div>;
+  return <CarInsurance />;
 }
 
 export default page;

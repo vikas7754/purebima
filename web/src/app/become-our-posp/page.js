@@ -1,5 +1,7 @@
+import BecomePOSP from "@/components/pages/BecomePOSP";
+
 function page() {
-  return <div>page</div>;
+  return <BecomePOSP />;
 }
 
 export default page;

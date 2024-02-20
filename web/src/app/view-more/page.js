@@ -1,5 +1,7 @@
+import ViewMorePage from "@/components/pages/ViewMore";
+
 function page() {
-  return <div>page</div>;
+  return <ViewMorePage />;
 }
 
 export default page;

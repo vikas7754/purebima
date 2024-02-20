@@ -1,5 +1,7 @@
+import AboutusPage from "@/components/pages/About";
+
 function page() {
-  return <div>page</div>;
+  return <AboutusPage />;
 }
 
 export default page;
