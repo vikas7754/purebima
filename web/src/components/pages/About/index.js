@@ -5,11 +5,16 @@ import HowItWorks from "../Home/HowItWorks";
 import OurPartners from "../Home/OurPartners";
 import styles from "./about.module.scss";
 import OurTeam from "../Home/OurTeam";
+import BreadCrumbs from "@/components/BreadCrumbs";
 
 function AboutusPage() {
   return (
     <div>
-      <AboutSection />
+      <BreadCrumbs
+        title="About Us"
+        links={[{ title: "About Us", href: "/about-us" }]}
+      />
+      <AboutSection hideHeading={true} />
       <div className={styles.container}>
         <div>
           <h2>Who We Are</h2>

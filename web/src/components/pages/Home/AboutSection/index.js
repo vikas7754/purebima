@@ -7,10 +7,10 @@ import {
   faShieldHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
-function AboutSection() {
+function AboutSection({ hideHeading = false }) {
   return (
     <div className={styles.container}>
-      <h2>About PureBima</h2>
+      {!hideHeading && <h2>About PureBima</h2>}
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
         luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor

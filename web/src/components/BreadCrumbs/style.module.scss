@@ -1,0 +1,47 @@
+.title {
+  background: #e7efff;
+  padding: 10px;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  h1 {
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  img {
+    height: 70px;
+  }
+}
+
+.breadcrumbs {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  a {
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text-dim);
+    &:hover {
+      color: var(--primary);
+    }
+  }
+  svg {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper img {
+    display: none;
+  }
+}
