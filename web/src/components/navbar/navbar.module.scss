@@ -5,6 +5,10 @@
   z-index: 99;
 }
 
+.scrolled {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -165,5 +169,15 @@
   .toggle_btn {
     display: block;
     cursor: pointer;
+  }
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  svg {
+    font-size: 25px;
   }
 }

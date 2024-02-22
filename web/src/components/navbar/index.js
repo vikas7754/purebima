@@ -3,8 +3,10 @@ import Link from "next/link";
 import styles from "./navbar.module.scss";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
+import useUser from "@/redux/hooks/useUser";
+import { getUser } from "@/services/user";
 
 const menus = [
   {
@@ -43,11 +45,14 @@ const menus = [
 ];
 
 function Navbar() {
+  const { user, login } = useUser();
   const [showMenu, setShowMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
   const menuRef = useRef(null);
   const btnRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const handleClickOutside = (event) => {
       if (
         menuRef.current &&
@@ -59,13 +64,30 @@ function Navbar() {
         setShowSubMenu(false);
       }
     };
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (!user) {
+      getUser().then((res) => {
+        if (res.data) login(res.data);
+      });
+    }
+  }, []);
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${scrolled && styles.scrolled}`}>
       <div className={styles.navbar}>
         <div className={styles.toggle_btn}>
           <button ref={btnRef} onClick={() => setShowMenu(!showMenu)}>
@@ -140,9 +162,16 @@ function Navbar() {
           </ul>
         </div>
         <div>
-          <Link href="/login" className="btn-primary">
-            Login
-          </Link>
+          {user ? (
+            <div className={styles.login}>
+              <span>{user?.name.slice(0, 10)}</span>
+              <FontAwesomeIcon icon={faUserCircle} color="var(--primary)" />
+            </div>
+          ) : (
+            <Link href="/login" className="btn-primary">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>
