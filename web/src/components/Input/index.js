@@ -1,23 +1,34 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./input.module.scss";
 
-function Input({ type, placeholder, onChange, label, id }) {
+const types = {
+  email: "email",
+  text: "text",
+  tel: "mobile number",
+  date: "date",
+};
+
+function Input({ type, placeholder, onChange, label, id, value, ...rest }) {
   const inputRef = useRef(null);
 
-  const [value, setValue] = useState("");
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     onChange(e.target.value);
-    setValue(e.target.value);
+    setInputValue(e.target.value);
     setError("");
   };
 
   const handleBlur = () => {
-    if (value === "") return setError("This field is required.");
+    if (inputValue === "") return setError("This field is required.");
     if (!inputRef.current.checkValidity())
-      return setError("Please enter a valid email.");
+      return setError(`Please enter a valid ${types[type] || "input"}.`);
   };
 
   return (
@@ -31,9 +42,10 @@ function Input({ type, placeholder, onChange, label, id }) {
         id={id}
         type={type}
         placeholder={placeholder}
-        value={value}
+        value={inputValue}
         onChange={handleChange}
         onBlur={handleBlur}
+        {...rest}
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>

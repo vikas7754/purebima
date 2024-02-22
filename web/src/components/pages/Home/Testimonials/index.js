@@ -3,43 +3,23 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
-const testimonials = [
-  {
-    _id: 1,
-    name: "John Doe",
-    title: "CEO",
-    image: "https://via.placeholder.com/150",
-    message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In etiam vitae, at amet, auctor. Nulla",
-  },
-  {
-    _id: 2,
-    name: "John Doe",
-    title: "CEO",
-    image: "https://via.placeholder.com/150",
-    message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In etiam vitae, at amet, auctor. Nulla",
-  },
-  {
-    _id: 3,
-    name: "John Doe",
-    title: "CEO",
-    image: "https://via.placeholder.com/150",
-    message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In etiam vitae, at amet, auctor. Nulla",
-  },
-  {
-    _id: 4,
-    name: "John Doe",
-    title: "CEO",
-    image: "https://via.placeholder.com/150",
-    message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In etiam vitae, at amet, auctor. Nulla",
-  },
-];
+import { useEffect, useState } from "react";
+import { getTestimonials } from "@/services/other";
 
 function Testimonials() {
+  const [testimonials, setTestimonials] = useState([]);
+  const fetchTestimonials = async () => {
+    try {
+      const { data } = await getTestimonials();
+      setTestimonials(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  useEffect(() => {
+    fetchTestimonials();
+  }, []);
+
   return (
     <div className={styles.container}>
       <h2>Customer Testimonials</h2>
@@ -71,11 +51,14 @@ function Testimonials() {
                 <p>{testimonial.message}</p>
                 <div className={styles.content}>
                   <div className={styles.image}>
-                    <img src={testimonial.image} alt={testimonial.name} />
+                    <img
+                      src={testimonial?.image || "/images/default.svg"}
+                      alt={testimonial.name}
+                    />
                   </div>
                   <div>
                     <h3>{testimonial.name}</h3>
-                    <p>{testimonial.title}</p>
+                    <p>{testimonial.designation}</p>
                   </div>
                 </div>
               </div>

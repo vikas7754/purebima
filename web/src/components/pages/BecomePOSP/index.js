@@ -24,6 +24,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { faFlag, faUser } from "@fortawesome/free-regular-svg-icons";
+import { submitApplication } from "@/services/application";
+import { toast } from "react-toastify";
 
 function BecomePOSP() {
   const [firstName, setFirstName] = useState("");
@@ -32,9 +34,28 @@ function BecomePOSP() {
   const [subject, setSubject] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, email, subject });
+    try {
+      const payload = {
+        firstName,
+        lastName,
+        email,
+        subject,
+        category: "Become POSP",
+      };
+      setSubmitting(true);
+      await submitApplication(payload);
+      setSubmitting(false);
+      toast.success("Your application has been submitted successfully.");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setSubject("");
+    } catch (e) {
+      setSubmitting(false);
+      toast.error("Something went wrong. Please try again later.");
+    }
   };
   return (
     <div>
@@ -51,6 +72,7 @@ function BecomePOSP() {
               id={"firstName"}
               type="text"
               placeholder="First Name"
+              value={firstName}
               label="First name here"
               onChange={setFirstName}
             />
@@ -58,6 +80,7 @@ function BecomePOSP() {
               id={"lastName"}
               type="text"
               placeholder="Last Name"
+              value={lastName}
               label="Last name here"
               onChange={setLastName}
             />
@@ -65,6 +88,7 @@ function BecomePOSP() {
               id={"email"}
               type="email"
               placeholder="Email"
+              value={email}
               label="Email here"
               onChange={setEmail}
             />
@@ -72,6 +96,7 @@ function BecomePOSP() {
               id={"subject"}
               type="text"
               placeholder="Subject"
+              value={subject}
               label="Subject here"
               onChange={setSubject}
             />

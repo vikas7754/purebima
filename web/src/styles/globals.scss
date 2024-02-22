@@ -246,9 +246,14 @@ input:-webkit-autofill:active {
   }
 }
 .title {
-  font-size: clamp(1rem, 5vw, 2rem);
+  color: var(--text);
+  font-family: "Poppins", Sans-serif;
+  font-size: clamp(20px, 5vw, 30px);
+  font-weight: 600;
+  line-height: 1;
+  padding: 10px 0;
+  width: 100%;
   text-align: center;
-  margin: 15px 0;
 }
 .hide {
   transition: all 0.5s ease;

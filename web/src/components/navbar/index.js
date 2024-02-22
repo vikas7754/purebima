@@ -140,7 +140,9 @@ function Navbar() {
           </ul>
         </div>
         <div>
-          <button className="btn-primary">Login</button>
+          <Link href="/login" className="btn-primary">
+            Login
+          </Link>
         </div>
       </div>
     </nav>
