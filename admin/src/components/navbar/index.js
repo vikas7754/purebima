@@ -67,9 +67,9 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (!user) {
+    if (!user?.name) {
       getUser().then((res) => {
-        if (res.data) login(res.data);
+        if (res.data?.name) login(res.data);
       });
     }
   }, []);
