@@ -16,6 +16,7 @@ const userSchema = new Schema(
       index: true,
       unique: true,
       required: true,
+      trim: true,
     },
     password: String,
     phone: String,
