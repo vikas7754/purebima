@@ -1,0 +1,137 @@
+.main {
+  display: flex;
+  padding: 20px 30px;
+  gap: 20px;
+  > div {
+    flex: 1;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  h2 {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1;
+  }
+  h4 {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0;
+    > div {
+      flex: 1 1 calc(50% - 15px);
+    }
+  }
+}
+
+.benefits {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  padding-top: 20px;
+  svg {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+  p {
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .left form {
+    flex-direction: column;
+    gap: 10px;
+    > div {
+      flex: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .benefits {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.bg {
+  background: #eff5ff;
+  padding: 30px 0;
+  h2 {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1;
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    opacity: 0.7;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+
+.bestIn {
+  padding: 40px 0;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1;
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    opacity: 0.7;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+
+.bestin_benefits,
+.eligibilities {
+  display: flex;
+  gap: 40px;
+  padding-top: 40px;
+  text-align: center;
+  flex-wrap: wrap;
+  > div {
+    flex: 1 1 300px;
+  }
+  svg {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 10px;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1;
+    margin-top: 20px;
+  }
+}

@@ -14,33 +14,20 @@ const menus = [
     link: "/",
   },
   {
-    name: "About Us",
-    link: "/about-us",
+    name: "Applications",
+    link: "/applications",
   },
   {
-    name: "Insurance Products",
-    subMenus: [
-      {
-        name: "Two Wheeler Insurance",
-        link: "/two-wheeler-insurance",
-      },
-      {
-        name: "Car Insurance",
-        link: "/car-insurance",
-      },
-      {
-        name: "Health Insurance",
-        link: "/health-insurance",
-      },
-      {
-        name: "View More",
-        link: "/view-more",
-      },
-    ],
+    name: "Users",
+    link: "/users",
   },
   {
-    name: "Become our POSP",
-    link: "/become-our-posp",
+    name: "FAQ",
+    link: "/faq",
+  },
+  {
+    name: "Testimonials",
+    link: "/testimonials",
   },
 ];
 
@@ -164,7 +151,7 @@ function Navbar() {
         <div>
           {user ? (
             <div className={styles.login}>
-              <span>{user?.name && user?.name?.slice(0, 10)}</span>
+              <span>{user?.name.slice(0, 10)}</span>
               <FontAwesomeIcon icon={faUserCircle} color="var(--primary)" />
             </div>
           ) : (

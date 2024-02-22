@@ -1,0 +1,56 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    span {
+      color: red;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 7px;
+  font-size: 16px;
+  background: #f5f7ff;
+  &:focus {
+    outline: none;
+    border: 1.5px solid var(--primary);
+    background: #fff;
+  }
+}
+
+.input.error {
+  border: 1.5px solid red;
+  animation: shake 0.2s linear 2;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

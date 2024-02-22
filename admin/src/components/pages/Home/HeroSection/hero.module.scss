@@ -1,0 +1,82 @@
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  > div {
+    flex: 1;
+  }
+  h1 {
+    color: var(--text);
+    font-family: "Poppins", Sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 30px;
+  p {
+    margin-top: 10px;
+    color: var(--text-dim);
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  > a {
+    flex: 1 1 calc(50% - 30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-dim);
+    span {
+      text-wrap: nowrap;
+    }
+    img {
+      width: 100%;
+      max-width: 100px;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+      span {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .products {
+    > a {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+.right {
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}

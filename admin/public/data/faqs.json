@@ -1,0 +1,24 @@
+{
+  "faqs": [
+    {
+      "question": "What is the difference between a 401(k) and a Roth 401(k)?",
+      "answer": "The main difference between a 401(k) and a Roth 401(k) is when you pay taxes on the money you contribute. With a 401(k), you contribute pre-tax dollars, which means you don’t pay taxes on the money you contribute until you withdraw it. With a Roth 401(k), you contribute after-tax dollars, which means you pay taxes on the money you contribute now, but you don’t pay taxes on the money you withdraw later."
+    },
+    {
+      "question": "What is the difference between a 401(k) and an IRA?",
+      "answer": "The main difference between a 401(k) and an IRA is who can contribute to them. A 401(k) is an employer-sponsored retirement plan, which means you can only contribute to it if your employer offers it. An IRA is an individual retirement account, which means you can contribute to it on your own, regardless of whether your employer offers a retirement plan."
+    },
+    {
+      "question": "What is the difference between a traditional IRA and a Roth IRA?",
+      "answer": "The main difference between a traditional IRA and a Roth IRA is when you pay taxes on the money you contribute. With a traditional IRA, you contribute pre-tax dollars, which means you don’t pay taxes on the money you contribute until you withdraw it. With a Roth IRA, you contribute after-tax dollars, which means you pay taxes on the money you contribute now, but you don’t pay taxes on the money you withdraw later."
+    },
+    {
+      "question": "What is the difference between a 401(k) and a 403(b)?",
+      "answer": "The main difference between a 401(k) and a 403(b) is who can contribute to them. A 401(k) is an employer-sponsored retirement plan, which means you can only contribute to it if your employer offers it. A 403(b) is a retirement plan for employees of public schools, tax-exempt organizations, and certain ministers, which means you can only contribute to it if you work for one of those employers."
+    },
+    {
+      "question": "What is the difference between a 401(k) and a 457(b)?",
+      "answer": "The main difference between a 401(k) and a 457(b) is"
+    }
+  ]
+}

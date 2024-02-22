@@ -8,7 +8,11 @@ let cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
 
-const allowedOrigins = ["http://localhost:3000", "https://purebima.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://purebima.vercel.app",
+];
 const corsOptions = {
   origin: allowedOrigins,
   credentials: true,
