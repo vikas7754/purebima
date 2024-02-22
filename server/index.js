@@ -37,7 +37,7 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  return res.send("Welcome");
+  return res.status(200).json("Welcome to PureBima Server");
 });
 
 require("./src/routes")(app);
