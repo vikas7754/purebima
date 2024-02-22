@@ -16,7 +16,7 @@ const corsOptions = {
 };
 
 const app = express();
-PORT = 8000;
+PORT = process.env.PORT || 8000;
 app.use(helmet());
 app.use(cors(corsOptions));
 app.use(bodyparser.urlencoded({ extended: false }));
