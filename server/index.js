@@ -12,6 +12,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "https://purebima.vercel.app",
+  "https://purebima-admin.vercel.app",
 ];
 const corsOptions = {
   origin: allowedOrigins,
