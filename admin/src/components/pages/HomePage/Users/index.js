@@ -6,8 +6,11 @@ import styles from "./users.module.scss";
 import elapsedTime from "@/modules/elapsedTime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+import useUser from "@/redux/hooks/useUser";
+import LoginPage from "@/components/LoginSignup";
 
 function Users() {
+  const { isLoggedIn, user } = useUser();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -47,48 +50,54 @@ function Users() {
   };
 
   return (
-    <div className={styles.container + " wrapper"}>
-      <div className={styles.top}>
-        <h1>Users ({total})</h1>
-        <div className={styles.actions}>
-          <button onClick={handleRefresh} className="btn-primary">
-            <FontAwesomeIcon icon={faSync} spin={loading} />
-          </button>
-        </div>
-      </div>
-      <div>
-        {users.length === 0 && !loading && <p>No users found.</p>}
-        {users.map((user) => (
-          <div key={user._id} className={styles.user}>
-            <h4>
-              <strong>Name: </strong> {user.name}
-            </h4>
-            <p>
-              <strong>Email: </strong>
-              <a href={`mailto:${user.email}`}>{user.email}</a>
-            </p>
-            {user.phone && (
-              <p>
-                <strong>Phone: </strong>
-                <a href={`tel:${user.phone}`}>{user.phone}</a>
-              </p>
+    <>
+      {isLoggedIn && user?.role === "admin" ? (
+        <div className={styles.container + " wrapper"}>
+          <div className={styles.top}>
+            <h1>Users ({total})</h1>
+            <div className={styles.actions}>
+              <button onClick={handleRefresh} className="btn-primary">
+                <FontAwesomeIcon icon={faSync} spin={loading} />
+              </button>
+            </div>
+          </div>
+          <div>
+            {users.length === 0 && !loading && <p>No users found.</p>}
+            {users.map((user) => (
+              <div key={user._id} className={styles.user}>
+                <h4>
+                  <strong>Name: </strong> {user.name}
+                </h4>
+                <p>
+                  <strong>Email: </strong>
+                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                </p>
+                {user.phone && (
+                  <p>
+                    <strong>Phone: </strong>
+                    <a href={`tel:${user.phone}`}>{user.phone}</a>
+                  </p>
+                )}
+                <p>
+                  Registered on: {new Date(user.createdAt).toLocaleDateString()}{" "}
+                  ({elapsedTime(user.createdAt)})
+                </p>
+              </div>
+            ))}
+            {loadMore && (
+              <div className={styles.loadMore}>
+                <button onClick={handleLoadMore} className="btn-primary">
+                  Load More
+                </button>
+              </div>
             )}
-            <p>
-              Registered on: {new Date(user.createdAt).toLocaleDateString()} (
-              {elapsedTime(user.createdAt)})
-            </p>
           </div>
-        ))}
-        {loadMore && (
-          <div className={styles.loadMore}>
-            <button onClick={handleLoadMore} className="btn-primary">
-              Load More
-            </button>
-          </div>
-        )}
-      </div>
-      {loading && <p>Loading...</p>}
-    </div>
+          {loading && <p>Loading...</p>}
+        </div>
+      ) : (
+        <LoginPage />
+      )}
+    </>
   );
 }
 

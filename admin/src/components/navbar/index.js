@@ -33,12 +33,14 @@ const menus = [
 ];
 
 function Navbar() {
-  const { user, login } = useUser();
+  const { user, login, logout } = useUser();
   const [showMenu, setShowMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
   const menuRef = useRef(null);
   const btnRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const handleClickOutside = (event) => {
@@ -74,6 +76,7 @@ function Navbar() {
       });
     }
   }, []);
+
   return (
     <nav className={`${styles.nav} ${scrolled && styles.scrolled}`}>
       <div className={styles.navbar}>
@@ -154,7 +157,23 @@ function Navbar() {
           {user ? (
             <div className={styles.login}>
               <span>{user?.name.slice(0, 10)}</span>
-              <FontAwesomeIcon icon={faUserCircle} color="var(--primary)" />
+              <button
+                className={styles.avatar}
+                onClick={() => setShowLogout(!showLogout)}
+              >
+                <FontAwesomeIcon icon={faUserCircle} color="var(--primary)" />
+              </button>
+              {showLogout && (
+                <div className={styles.logout}>
+                  <button
+                    onClick={() => logout()}
+                    className="btn-primary"
+                    style={{ "--primary": "red" }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <button className="btn-primary">Login</button>

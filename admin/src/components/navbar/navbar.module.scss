@@ -173,6 +173,7 @@
 }
 
 .login {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -180,6 +181,18 @@
   svg {
     font-size: 25px;
   }
+}
+
+.avatar {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.logout {
+  position: absolute;
+  top: 50px;
+  right: 0;
 }
 
 .right {

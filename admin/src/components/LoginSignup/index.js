@@ -7,7 +7,7 @@ import Signup from "./Signup";
 function LoginPage() {
   const [toggle, setToggle] = useState(true);
   return (
-    <div className={styles.container} style={{ minHeight: "100vh" }}>
+    <div className={styles.container} style={{ minHeight: "90vh" }}>
       <div className={styles.wrapper}>
         <div className={styles.leftPanel}>
           <div>

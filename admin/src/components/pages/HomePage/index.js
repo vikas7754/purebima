@@ -8,10 +8,10 @@ import styles from "./home.module.scss";
 import LoginPage from "@/components/LoginSignup";
 
 function HomePage() {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, user } = useUser();
   return (
     <>
-      {isLoggedIn ? (
+      {isLoggedIn && user?.role === "admin" ? (
         <div>
           <Charts />
           <div className={styles.data}>

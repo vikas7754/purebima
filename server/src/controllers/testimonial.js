@@ -3,8 +3,7 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const sharp = require("sharp");
-const path = require("path");
-const fs = require("fs");
+const { uploadImageToCloudinary } = require("../middlewares/uploadImage");
 
 const getTestimonials = async (req, res) => {
   try {
@@ -58,14 +57,10 @@ const uploadImage = async (req, res) => {
     if (err) return res.status(500).json({ message: err.message });
     try {
       const buffer = await sharp(req.file.buffer)
-        .resize({ width: 250, height: 250 })
-        .png()
+        .resize({ width: 250, height: 250, fit: "cover" })
         .toBuffer();
-
-      const filename = `testimonial-${Date.now()}.png`;
-      const filePath = path.join(__dirname, "../../public/uploads", filename);
-      fs.writeFileSync(filePath, buffer);
-      return res.status(201).json({ url: `/public/uploads/${filename}` });
+      const url = await uploadImageToCloudinary(buffer);
+      return res.status(200).json({ url });
     } catch (err) {
       return res.status(500).json({ message: err.message });
     }

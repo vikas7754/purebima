@@ -52,10 +52,7 @@ function Testimonials() {
                 <div className={styles.content}>
                   <div className={styles.image}>
                     <img
-                      src={
-                        process.env.NEXT_PUBLIC_URL + testimonial?.image ||
-                        "/images/default.svg"
-                      }
+                      src={testimonial?.image || "/images/default.svg"}
                       alt={testimonial.name}
                     />
                   </div>

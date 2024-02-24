@@ -6,8 +6,11 @@ import { getApplications } from "@/services/application";
 import elapsedTime from "@/modules/elapsedTime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+import useUser from "@/redux/hooks/useUser";
+import LoginPage from "@/components/LoginSignup";
 
 function Applications() {
+  const { isLoggedIn, user } = useUser();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -47,76 +50,88 @@ function Applications() {
   };
 
   return (
-    <div className={styles.container + " wrapper"}>
-      <div className={styles.top}>
-        <h1>Applications ({total})</h1>
-        <div className={styles.actions}>
-          <button onClick={handleRefresh} className="btn-primary">
-            <FontAwesomeIcon icon={faSync} spin={loading} />
-          </button>
-        </div>
-      </div>
-      <div>
-        {applications.length === 0 && !loading && <p>No applications found.</p>}
-        {applications.map((application) => (
-          <div key={application._id} className={styles.application}>
-            <h3>
-              <strong>Application for: </strong>
-              {application.category}
-            </h3>
-            {application.firstName && (
-              <div>
-                <strong>First Name: </strong>
-                {application.firstName}
-              </div>
-            )}
-            {application.lastName && (
-              <div>
-                <strong>Last Name: </strong>
-                {application.lastName}
-              </div>
-            )}
-            {application.email && (
-              <div>
-                <strong>Email: </strong>
-                <a href={`mailto:${application.email}`}>{application.email}</a>
-              </div>
-            )}
-            {application.mobile && (
-              <div>
-                <strong>Mobile: </strong>
-                <a href={`tel:${application.mobile}`}>{application.mobile}</a>
-              </div>
-            )}
-            {application.subject && (
-              <div>
-                <strong>Subject: </strong>
-                {application.subject}
-              </div>
-            )}
-            {application.vehicleNumber && (
-              <div>
-                <strong>Vehicle Number: </strong>
-                {application.vehicleNumber}
-              </div>
-            )}
-            {application.dob && (
-              <div>
-                <strong>Date of Birth: </strong>
-                {application.dob}
-              </div>
-            )}
-            <div>
-              <strong>Submitted At: </strong>
-              {new Date(application.createdAt).toLocaleString()} (
-              {elapsedTime(application.createdAt)})
+    <>
+      {isLoggedIn && user?.role === "admin" ? (
+        <div className={styles.container + " wrapper"}>
+          <div className={styles.top}>
+            <h1>Applications ({total})</h1>
+            <div className={styles.actions}>
+              <button onClick={handleRefresh} className="btn-primary">
+                <FontAwesomeIcon icon={faSync} spin={loading} />
+              </button>
             </div>
           </div>
-        ))}
-      </div>
-      {loading && <p>Loading...</p>}
-      {loadMore && <button onClick={handleLoadMore}>Load More</button>}
-    </div>
+          <div>
+            {applications.length === 0 && !loading && (
+              <p>No applications found.</p>
+            )}
+            {applications.map((application) => (
+              <div key={application._id} className={styles.application}>
+                <h3>
+                  <strong>Application for: </strong>
+                  {application.category}
+                </h3>
+                {application.firstName && (
+                  <div>
+                    <strong>First Name: </strong>
+                    {application.firstName}
+                  </div>
+                )}
+                {application.lastName && (
+                  <div>
+                    <strong>Last Name: </strong>
+                    {application.lastName}
+                  </div>
+                )}
+                {application.email && (
+                  <div>
+                    <strong>Email: </strong>
+                    <a href={`mailto:${application.email}`}>
+                      {application.email}
+                    </a>
+                  </div>
+                )}
+                {application.mobile && (
+                  <div>
+                    <strong>Mobile: </strong>
+                    <a href={`tel:${application.mobile}`}>
+                      {application.mobile}
+                    </a>
+                  </div>
+                )}
+                {application.subject && (
+                  <div>
+                    <strong>Subject: </strong>
+                    {application.subject}
+                  </div>
+                )}
+                {application.vehicleNumber && (
+                  <div>
+                    <strong>Vehicle Number: </strong>
+                    {application.vehicleNumber}
+                  </div>
+                )}
+                {application.dob && (
+                  <div>
+                    <strong>Date of Birth: </strong>
+                    {application.dob}
+                  </div>
+                )}
+                <div>
+                  <strong>Submitted At: </strong>
+                  {new Date(application.createdAt).toLocaleString()} (
+                  {elapsedTime(application.createdAt)})
+                </div>
+              </div>
+            ))}
+          </div>
+          {loading && <p>Loading...</p>}
+          {loadMore && <button onClick={handleLoadMore}>Load More</button>}
+        </div>
+      ) : (
+        <LoginPage />
+      )}
+    </>
   );
 }
 
