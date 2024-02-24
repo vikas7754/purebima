@@ -7,6 +7,7 @@ import { faAngleDown, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
 import useUser from "@/redux/hooks/useUser";
 import { getUser } from "@/services/user";
+import ThemeToggleButton from "../buttons/ThemeToggleButton";
 
 const menus = [
   {
@@ -98,7 +99,7 @@ function Navbar() {
         <div className={styles.logo}>
           <a href="/">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo.png"
               alt="PureBima"
               width={160}
               height={35}
@@ -148,16 +149,15 @@ function Navbar() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className={styles.right}>
+          <ThemeToggleButton />
           {user ? (
             <div className={styles.login}>
               <span>{user?.name.slice(0, 10)}</span>
               <FontAwesomeIcon icon={faUserCircle} color="var(--primary)" />
             </div>
           ) : (
-            <Link href="/login" className="btn-primary">
-              Login
-            </Link>
+            <button className="btn-primary">Login</button>
           )}
         </div>
       </div>

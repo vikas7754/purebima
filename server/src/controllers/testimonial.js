@@ -1,4 +1,10 @@
 const Testimonial = require("../models/testimonial");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+const sharp = require("sharp");
+const path = require("path");
+const fs = require("fs");
 
 const getTestimonials = async (req, res) => {
   try {
@@ -47,9 +53,29 @@ const deleteTestimonial = async (req, res) => {
   }
 };
 
+const uploadImage = async (req, res) => {
+  upload.single("image")(req, res, async (err) => {
+    if (err) return res.status(500).json({ message: err.message });
+    try {
+      const buffer = await sharp(req.file.buffer)
+        .resize({ width: 250, height: 250 })
+        .png()
+        .toBuffer();
+
+      const filename = `testimonial-${Date.now()}.png`;
+      const filePath = path.join(__dirname, "../../public/uploads", filename);
+      fs.writeFileSync(filePath, buffer);
+      return res.status(201).json({ url: `/public/uploads/${filename}` });
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+  });
+};
+
 module.exports = {
   getTestimonials,
   createTestimonial,
   updateTestimonial,
   deleteTestimonial,
+  uploadImage,
 };

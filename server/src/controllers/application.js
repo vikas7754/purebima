@@ -18,9 +18,9 @@ const getApplications = async (req, res) => {
   const skip = (page - 1) * limit;
   try {
     const applications = await Application.find({})
+      .sort({ createdAt: -1 })
       .limit(limit)
-      .skip(skip)
-      .sort({ createdAt: -1 });
+      .skip(skip);
     const total = await Application.countDocuments({});
     return res.status(200).json({ applications, total });
   } catch (err) {

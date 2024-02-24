@@ -135,10 +135,27 @@ const getLoginUser = async (req, res) => {
   return res.status(200).json({});
 };
 
+const getUsers = async (req, res) => {
+  const limit = parseInt(req.query.limit) || 10;
+  const page = parseInt(req.query.page) || 1;
+  const skip = (page - 1) * limit;
+  try {
+    const users = await User.find({})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .skip(skip);
+    const total = await User.countDocuments({});
+    return res.status(200).json({ users, total });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
+
 module.exports = {
   signup,
   login,
   googleLogin,
   logout,
   getLoginUser,
+  getUsers,
 };

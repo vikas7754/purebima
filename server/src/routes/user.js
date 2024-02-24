@@ -7,5 +7,6 @@ router.post("/signup", isLogin, controller.signup);
 router.post("/googlelogin", controller.googleLogin);
 router.get("/logout", auth, controller.logout);
 router.get("/me", isLogin, controller.getLoginUser);
+router.get("/", auth, roleAuth, controller.getUsers);
 
 module.exports = router;

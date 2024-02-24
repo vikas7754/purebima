@@ -22,3 +22,7 @@ export const logoutUser = () => {
 export const getUser = () => {
   return axios.get(URL + "/me");
 };
+
+export const getUsers = (page) => {
+  return axios.get(URL + `?page=${page}`);
+};
