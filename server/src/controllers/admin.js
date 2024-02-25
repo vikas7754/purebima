@@ -1,5 +1,6 @@
 const Application = require("../models/application");
 const User = require("../models/user");
+const { Workbook } = require("exceljs");
 
 const getChartsData = async (req, res) => {
   try {
@@ -107,6 +108,106 @@ const getChartsData = async (req, res) => {
   }
 };
 
+const exportApplicationDataToExcel = async (req, res) => {
+  try {
+    const data = await Application.find({});
+
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet("Sheet 1");
+
+    const columns = [
+      { header: "S.No", key: "sn", width: 10 },
+      { header: "First Name", key: "firstName", width: 20 },
+      { header: "Last Name", key: "lastName", width: 20 },
+      { header: "Email", key: "email", width: 20 },
+      { header: "Mobile", key: "mobile", width: 20 },
+      { header: "Category", key: "category", width: 20 },
+      { header: "Vehicle Number", key: "vehicleNumber", width: 20 },
+      { header: "DOB", key: "dob", width: 20 },
+      { header: "Message", key: "message", width: 20 },
+      { header: "Created At", key: "createdAt", width: 20 },
+    ];
+
+    worksheet.columns = columns;
+
+    for (let i = 0; i < data.length; i++) {
+      worksheet.addRow({
+        sn: i + 1,
+        firstName: data[i]?.firstName || "N/A",
+        lastName: data[i]?.lastName || "N/A",
+        email: data[i]?.email || "N/A",
+        mobile: data[i]?.mobile || "N/A",
+        category: data[i]?.category || "N/A",
+        vehicleNumber: data[i]?.vehicleNumber || "N/A",
+        dob: data[i]?.dob || "N/A",
+        message: data[i]?.subject || "N/A",
+        createdAt: new Date(data[i]?.createdAt).toLocaleString(),
+      });
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=" + `Application-data.xlsx`
+    );
+
+    return res.status(200).send(buffer);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+const exportUserDataToExcel = async (req, res) => {
+  try {
+    const data = await User.find({});
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet("Sheet 1");
+
+    const columns = [
+      { header: "S.No", key: "sn", width: 10 },
+      { header: "Name", key: "name", width: 20 },
+      { header: "Email", key: "email", width: 20 },
+      { header: "Mobile", key: "mobile", width: 20 },
+      { header: "Role", key: "role", width: 20 },
+      { header: "Date", key: "createdAt", width: 20 },
+    ];
+
+    worksheet.columns = columns;
+
+    for (let i = 0; i < data.length; i++) {
+      worksheet.addRow({
+        sn: i + 1,
+        name: data[i]?.name || "N/A",
+        email: data[i]?.email || "N/A",
+        mobile: data[i]?.phone || "N/A",
+        role: data[i]?.role || "N/A",
+        createdAt: new Date(data[i]?.createdAt).toLocaleString(),
+      });
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=" + `user-data.xlsx`
+    );
+
+    return res.status(200).send(buffer);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   getChartsData,
+  exportApplicationDataToExcel,
+  exportUserDataToExcel,
 };

@@ -43,3 +43,15 @@ export const deleteTestimonial = (id) => {
 export const getChartsData = () => {
   return axios.get(URL3 + "/charts");
 };
+
+export const exportApplications = () => {
+  return axios.get(URL3 + "/applications", {
+    responseType: "blob",
+  });
+};
+
+export const exportUsers = () => {
+  return axios.get(URL3 + "/users", {
+    responseType: "blob",
+  });
+};

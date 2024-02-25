@@ -33,3 +33,27 @@
     text-decoration: none;
   }
 }
+
+.action {
+  display: flex;
+  gap: 5px;
+  button {
+    background: none;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-wrap: nowrap;
+    color: #fff;
+    display: flex;
+    gap: 5px;
+  }
+  .refresh {
+    background: var(--primary);
+  }
+  .export {
+    background: var(--green);
+    color: var(--bg);
+  }
+}

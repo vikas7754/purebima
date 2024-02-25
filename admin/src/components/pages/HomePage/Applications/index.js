@@ -5,9 +5,16 @@ import styles from "./applications.module.scss";
 import { getApplications } from "@/services/application";
 import elapsedTime from "@/modules/elapsedTime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSync } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faFileDownload,
+  faSpinner,
+  faSync,
+} from "@fortawesome/free-solid-svg-icons";
 import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
+import { exportApplications } from "@/services/other";
+import { toast } from "react-toastify";
 
 function Applications() {
   const { isLoggedIn, user } = useUser();
@@ -49,15 +56,58 @@ function Applications() {
     setRefreshed(refreshed + 1);
   };
 
+  const [exporting, setExporting] = useState(false);
+  const handleExport = async (e) => {
+    e.preventDefault();
+    if (exporting) return;
+    try {
+      setExporting(true);
+      const response = await exportApplications();
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+
+      // Create a temporary URL for the blob
+      const url = window.URL.createObjectURL(blob);
+
+      // Create a link element to trigger the file download
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "applications.xlsx"; // Set the filename for the downloaded file
+      document.body.appendChild(link);
+
+      // Trigger the file download
+      link.click();
+
+      // Clean up
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
+
+      toast.success("Applications data exported successfully");
+      setExporting(false);
+    } catch (err) {
+      setExporting(false);
+      console.error(err);
+      toast.error("Failed to export applications");
+    }
+  };
+
   return (
     <>
       {isLoggedIn && user?.role === "admin" ? (
         <div className={styles.container + " wrapper"}>
           <div className={styles.top}>
             <h1>Applications ({total})</h1>
-            <div className={styles.actions}>
-              <button onClick={handleRefresh} className="btn-primary">
+            <div className={styles.action}>
+              <button onClick={handleRefresh} className={styles.refresh}>
                 <FontAwesomeIcon icon={faSync} spin={loading} />
+              </button>
+              <button onClick={handleExport} className={styles.export}>
+                <span>Export</span>
+                <FontAwesomeIcon
+                  icon={exporting ? faSpinner : faDownload}
+                  spin={exporting}
+                />
               </button>
             </div>
           </div>
