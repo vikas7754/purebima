@@ -248,6 +248,26 @@ input:-webkit-autofill:active {
     left: 100%;
   }
 }
+
+.load-more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  button {
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    &:hover {
+      background: rgb(11, 19, 255);
+    }
+  }
+}
+
 .title {
   color: var(--text);
   font-family: "Poppins", Sans-serif;

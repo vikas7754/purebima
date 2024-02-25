@@ -29,11 +29,12 @@ function Applications() {
     try {
       setLoading(true);
       const { data } = await getApplications(page);
-      setApplications(data.applications);
+      setApplications([...applications, ...data.applications]);
       setPage(page + 1);
       setLoading(false);
       setTotal(data.total);
-      if (data.applications.length < data.total) setLoadMore(true);
+      if (data.applications.length + applications.length < data.total)
+        setLoadMore(true);
       else setLoadMore(false);
     } catch (err) {
       setLoading(false);
@@ -176,7 +177,11 @@ function Applications() {
             ))}
           </div>
           {loading && <p>Loading...</p>}
-          {loadMore && <button onClick={handleLoadMore}>Load More</button>}
+          {loadMore && (
+            <div className="load-more">
+              <button onClick={handleLoadMore}>Load More</button>
+            </div>
+          )}
         </div>
       ) : (
         <LoginPage />

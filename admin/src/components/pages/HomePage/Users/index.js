@@ -28,11 +28,11 @@ function Users() {
     try {
       setLoading(true);
       const { data } = await getUsers(page);
-      setUsers(data.users);
+      setUsers([...users, ...data.users]);
       setPage(page + 1);
       setLoading(false);
       setTotal(data.total);
-      if (data.users.length < data.total) setLoadMore(true);
+      if (data.users.length + users.length < data.total) setLoadMore(true);
       else setLoadMore(false);
     } catch (err) {
       setLoading(false);
@@ -134,10 +134,8 @@ function Users() {
               </div>
             ))}
             {loadMore && (
-              <div className={styles.loadMore}>
-                <button onClick={handleLoadMore} className="btn-primary">
-                  Load More
-                </button>
+              <div className="load-more">
+                <button onClick={handleLoadMore}>Load More</button>
               </div>
             )}
           </div>
