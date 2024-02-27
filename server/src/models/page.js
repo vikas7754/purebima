@@ -17,6 +17,14 @@ const pageSchema = new Schema(
       enum: ["page", "static", "component"],
       default: "page",
     },
+    showFaq: {
+      type: Boolean,
+      default: false,
+    },
+    showTestimonial: {
+      type: Boolean,
+      default: false,
+    },
     data: {
       type: Schema.Types.Mixed,
       default: {},

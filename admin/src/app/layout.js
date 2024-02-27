@@ -1,6 +1,7 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
 import "@/styles/globals.scss";
+import "@/styles/editor.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ReduxProvider from "@/redux/ReduxProvider";
 import NextTopLoader from "nextjs-toploader";

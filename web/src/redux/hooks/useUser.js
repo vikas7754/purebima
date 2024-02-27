@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../states/user";
+import { logoutUser } from "@/services/user";
 
 const useUser = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -12,6 +13,7 @@ const useUser = () => {
 
   const logoutFn = () => {
     dispatch(logout());
+    logoutUser();
   };
 
   return {

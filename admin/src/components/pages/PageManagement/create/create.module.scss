@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #000;
+  min-height: 80vh;
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: #fff;
+    color: #000;
+    &:focus {
+      outline: none;
+      border: 1px solid var(--primary);
+    }
+  }
+}
+.checkbox {
+  display: flex;
+  gap: 20px;
+  input {
+    margin-right: 6px;
+  }
+  label {
+    cursor: pointer;
+  }
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}

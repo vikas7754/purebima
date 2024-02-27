@@ -390,3 +390,7 @@ input:-webkit-autofill:active {
   max-width: var(--max-width);
   margin: auto;
 }
+
+.ck-editor__editable {
+  min-height: 350px !important;
+}

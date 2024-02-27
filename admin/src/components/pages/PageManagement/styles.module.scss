@@ -1,3 +1,7 @@
+.container {
+  min-height: 85vh;
+}
+
 .tabs {
   display: flex;
   border-bottom: 1px solid var(--border-color);
@@ -18,5 +22,133 @@
       color: var(--primary);
       border-bottom: 2px solid var(--primary);
     }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  td {
+    svg {
+      margin-left: 5px;
+    }
+  }
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+.table tr {
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  padding: 0.35em;
+}
+
+.table th,
+.table td {
+  padding: 0.625em;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+.table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1100px) {
+  .table {
+    border: 0;
+    td {
+      border: none;
+    }
+  }
+
+  .table caption {
+    font-size: 1.3em;
+  }
+
+  .table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .table tr {
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  .table td {
+    border-bottom: 1px solid var(--border-color);
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  button,
+  a {
+    background: none;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-dim);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-wrap: nowrap;
+    svg {
+      margin-left: 5px;
+    }
+  }
+  .edit {
+    background: var(--primary);
+    color: #fff;
+  }
+  .delete {
+    background: red;
+    color: #fff;
   }
 }
