@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <ReduxProvider>
       <html lang="en">
-        <body className={"dark"}>
+        <body className={"light"}>
           <Navbar />
           <NextTopLoader
             color="red"

@@ -2,7 +2,7 @@ const Faq = require("../models/faq");
 
 const getFaqs = async (req, res) => {
   try {
-    const faqs = await Faq.find({});
+    const faqs = await Faq.find({}).sort({ order: 1, createdAt: 1 });
     res.status(200).json(faqs);
   } catch (error) {
     res.status(404).json({ message: error.message });

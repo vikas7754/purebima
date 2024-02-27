@@ -105,6 +105,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .user_name {
+    display: none;
+  }
+
   .menu_container {
     position: fixed;
     top: 50px;

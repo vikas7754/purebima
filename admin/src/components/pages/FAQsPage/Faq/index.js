@@ -5,6 +5,7 @@ import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
 import { deleteFAQ, updateFAQ } from "@/services/other";
+import Modal from "@/components/modal";
 
 function Faq({ faq, refresh }) {
   const [show, setShow] = useState(false);
@@ -13,15 +14,24 @@ function Faq({ faq, refresh }) {
 
   const [newQuestion, setNewQuestion] = useState(faq.question);
   const [newAnswer, setNewAnswer] = useState(faq.answer);
+  const [newOrder, setNewOrder] = useState(faq.order || "");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newQuestion === faq.question && newAnswer === faq.answer)
+    if (
+      newQuestion === faq.question &&
+      newAnswer === faq.answer &&
+      newOrder === faq.order
+    )
       return setEdit(false);
     if (!newQuestion || !newAnswer)
       return toast.error("Please fill all fields");
     try {
-      await updateFAQ(faq._id, { question: newQuestion, answer: newAnswer });
+      await updateFAQ(faq._id, {
+        question: newQuestion,
+        answer: newAnswer,
+        order: newOrder,
+      });
       setEdit(false);
       toast.success("FAQ updated successfully");
       refresh();
@@ -48,46 +58,51 @@ function Faq({ faq, refresh }) {
     <>
       {edit &&
         createPortal(
-          <div className={styles.modal}>
-            <div className={styles.modal_content}>
-              <button onClick={() => setEdit(false)} className={styles.close}>
-                X
-              </button>
-              <h2>Edit FAQ</h2>
-              <form onSubmit={handleSubmit}>
-                <div className={styles.form_group}>
-                  <label htmlFor="question">Question</label>
-                  <textarea
-                    type="text"
-                    id="question"
-                    value={newQuestion}
-                    onChange={(e) => setNewQuestion(e.target.value)}
-                  ></textarea>
-                </div>
-                <div className={styles.form_group}>
-                  <label htmlFor="answer">Answer</label>
-                  <textarea
-                    id="answer"
-                    rows={5}
-                    value={newAnswer}
-                    onChange={(e) => setNewAnswer(e.target.value)}
-                  ></textarea>
-                </div>
-                <div className={styles.submit}>
-                  <button
-                    onClick={() => setEdit(false)}
-                    className="btn-secondary"
-                    style={{ "--primary": "red" }}
-                  >
-                    Cancel
-                  </button>
-                  <button type="submit" className="btn-primary">
-                    Save
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>,
+          <Modal close={() => setEdit(false)}>
+            <h2>Edit FAQ</h2>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="order">Order</label>
+                <input
+                  type="number"
+                  id="order"
+                  value={newOrder}
+                  placeholder="FAQ order no."
+                  onChange={(e) => setNewOrder(e.target.value)}
+                />
+              </div>
+              <div className={styles.form_group}>
+                <label htmlFor="question">Question</label>
+                <textarea
+                  type="text"
+                  id="question"
+                  value={newQuestion}
+                  onChange={(e) => setNewQuestion(e.target.value)}
+                ></textarea>
+              </div>
+              <div className={styles.form_group}>
+                <label htmlFor="answer">Answer</label>
+                <textarea
+                  id="answer"
+                  rows={5}
+                  value={newAnswer}
+                  onChange={(e) => setNewAnswer(e.target.value)}
+                ></textarea>
+              </div>
+              <div className={styles.submit}>
+                <button
+                  onClick={() => setEdit(false)}
+                  className="btn-secondary"
+                  style={{ "--primary": "red" }}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className="btn-primary">
+                  Save
+                </button>
+              </div>
+            </form>
+          </Modal>,
           document.body
         )}
       {deleteModal && (

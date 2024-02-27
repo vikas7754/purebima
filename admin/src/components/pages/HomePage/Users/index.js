@@ -14,6 +14,8 @@ import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
 import { exportUsers } from "@/services/other";
 import { toast } from "react-toastify";
+import Modal from "@/components/modal";
+import { createPortal } from "react-dom";
 
 function Users() {
   const { isLoggedIn, user } = useUser();
@@ -23,6 +25,7 @@ function Users() {
   const [loadMore, setLoadMore] = useState(false);
   const [total, setTotal] = useState(null);
   const [refreshed, setRefreshed] = useState(0);
+  const [showExport, setShowExport] = useState(false);
 
   const fetchUsers = async () => {
     try {
@@ -56,12 +59,22 @@ function Users() {
   };
 
   const [exporting, setExporting] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const [role, setRole] = useState("");
   const handleExport = async (e) => {
     e.preventDefault();
     if (exporting) return;
     try {
       setExporting(true);
-      const response = await exportUsers();
+      const payload = {
+        startDate,
+        endDate,
+        role,
+      };
+      const response = await exportUsers(payload);
       const blob = new Blob([response.data], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       });
@@ -93,6 +106,58 @@ function Users() {
 
   return (
     <>
+      {showExport &&
+        createPortal(
+          <Modal close={() => setShowExport(false)}>
+            <h3>Export Users Data</h3>
+            <form>
+              <div>
+                <label htmlFor="startDate">Start Date (From)</label>
+                <input
+                  type="date"
+                  id="startDate"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="endDate">End Date (To)</label>
+                <input
+                  type="date"
+                  id="endDate"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="role">User role</label>
+                <select
+                  id="role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              <div>
+                <button
+                  onClick={handleExport}
+                  type="submit"
+                  className="btn-primary"
+                >
+                  {exporting ? (
+                    <FontAwesomeIcon icon={faSpinner} spin />
+                  ) : (
+                    <span>Export</span>
+                  )}
+                </button>
+              </div>
+            </form>
+          </Modal>,
+          document.body
+        )}
       {isLoggedIn && user?.role === "admin" ? (
         <div className={styles.container + " wrapper"}>
           <div className={styles.top}>
@@ -101,12 +166,12 @@ function Users() {
               <button onClick={handleRefresh} className={styles.refresh}>
                 <FontAwesomeIcon icon={faSync} spin={loading} />
               </button>
-              <button onClick={handleExport} className={styles.export}>
+              <button
+                onClick={() => setShowExport(true)}
+                className={styles.export}
+              >
                 <span>Export</span>
-                <FontAwesomeIcon
-                  icon={exporting ? faSpinner : faDownload}
-                  spin={exporting}
-                />
+                <FontAwesomeIcon icon={faDownload} />
               </button>
             </div>
           </div>

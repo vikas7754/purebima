@@ -30,6 +30,10 @@ const menus = [
     name: "Testimonials",
     link: "/testimonials",
   },
+  {
+    name: "Pages",
+    link: "/pages",
+  },
 ];
 
 function Navbar() {
@@ -156,7 +160,9 @@ function Navbar() {
           <ThemeToggleButton />
           {user ? (
             <div className={styles.login}>
-              <span>{user?.name.slice(0, 10)}</span>
+              <span className={styles.user_name}>
+                {user?.name.slice(0, 10)}
+              </span>
               <button
                 className={styles.avatar}
                 onClick={() => setShowLogout(!showLogout)}

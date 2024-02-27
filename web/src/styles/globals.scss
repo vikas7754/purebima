@@ -27,9 +27,9 @@
 }
 body {
   position: relative;
-  font-family: "Poppins", Sans-serif;
+  font-family: Helvetica, sans-serif;
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--text-dim);
 }
 body.light {
   --primary: #0068ff;

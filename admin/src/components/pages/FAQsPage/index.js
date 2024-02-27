@@ -8,6 +8,7 @@ import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
 import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
+import Modal from "@/components/modal";
 
 function FAQsPage() {
   const { isLoggedIn, user } = useUser();
@@ -17,6 +18,7 @@ function FAQsPage() {
   const [create, setCreate] = useState(false);
   const [newQuestion, setNewQuestion] = useState("");
   const [newAnswer, setNewAnswer] = useState("");
+  const [newOrder, setNewOrder] = useState("");
 
   const fetchFaqs = async () => {
     try {
@@ -46,6 +48,7 @@ function FAQsPage() {
       const { data } = await createFAQ({
         question: newQuestion,
         answer: newAnswer,
+        order: newOrder,
       });
       setFaqs([...faqs, data]);
       setCreate(false);
@@ -61,51 +64,53 @@ function FAQsPage() {
         <>
           {create &&
             createPortal(
-              <div className={styles.modal}>
-                <div className={styles.modal_content}>
-                  <button
-                    onClick={() => setCreate(false)}
-                    className={styles.close}
-                  >
-                    X
-                  </button>
-                  <h2>Create FAQ</h2>
-                  <form onSubmit={handleSubmit}>
-                    <div className={styles.form_group}>
-                      <label htmlFor="question">Question</label>
-                      <textarea
-                        type="text"
-                        id="question"
-                        value={newQuestion}
-                        placeholder="Enter question here..."
-                        onChange={(e) => setNewQuestion(e.target.value)}
-                      ></textarea>
-                    </div>
-                    <div className={styles.form_group}>
-                      <label htmlFor="answer">Answer</label>
-                      <textarea
-                        id="answer"
-                        rows={5}
-                        value={newAnswer}
-                        placeholder="Enter answer here..."
-                        onChange={(e) => setNewAnswer(e.target.value)}
-                      ></textarea>
-                    </div>
-                    <div className={styles.submit}>
-                      <button
-                        onClick={() => setCreate(false)}
-                        className="btn-secondary"
-                        style={{ "--primary": "red" }}
-                      >
-                        Cancel
-                      </button>
-                      <button type="submit" className="btn-primary">
-                        Save
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>,
+              <Modal close={() => setCreate(false)}>
+                <h2>Create FAQ</h2>
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="order">Order</label>
+                    <input
+                      type="number"
+                      id="order"
+                      value={newOrder}
+                      placeholder="FAQ order no."
+                      onChange={(e) => setNewOrder(e.target.value)}
+                    />
+                  </div>
+                  <div className={styles.form_group}>
+                    <label htmlFor="question">Question</label>
+                    <textarea
+                      type="text"
+                      id="question"
+                      value={newQuestion}
+                      placeholder="Enter question here..."
+                      onChange={(e) => setNewQuestion(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div className={styles.form_group}>
+                    <label htmlFor="answer">Answer</label>
+                    <textarea
+                      id="answer"
+                      rows={5}
+                      value={newAnswer}
+                      placeholder="Enter answer here..."
+                      onChange={(e) => setNewAnswer(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div className={styles.submit}>
+                    <button
+                      onClick={() => setCreate(false)}
+                      className="btn-secondary"
+                      style={{ "--primary": "red" }}
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" className="btn-primary">
+                      Save
+                    </button>
+                  </div>
+                </form>
+              </Modal>,
               document.body
             )}
           <div className="wrapper">

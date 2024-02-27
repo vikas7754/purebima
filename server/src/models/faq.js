@@ -5,6 +5,7 @@ const faqSchema = new Schema(
   {
     question: String,
     answer: String,
+    order: Number,
   },
   { timestamps: true }
 );

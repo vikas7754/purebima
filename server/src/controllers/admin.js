@@ -109,8 +109,18 @@ const getChartsData = async (req, res) => {
 };
 
 const exportApplicationDataToExcel = async (req, res) => {
+  const { startDate, endDate, category } = req.query;
+  const query = {};
+  if (startDate)
+    query.createdAt = { ...query.createdAt, $gte: new Date(startDate) };
+  if (endDate) {
+    const date = new Date(endDate).setHours(23, 59, 59, 999);
+    query.createdAt = { ...query.createdAt, $lte: new Date(date) };
+  }
+  if (category) query.category = category;
+
   try {
-    const data = await Application.find({});
+    const data = await Application.find(query);
 
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet("Sheet 1");
@@ -161,9 +171,20 @@ const exportApplicationDataToExcel = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+
 const exportUserDataToExcel = async (req, res) => {
+  const { startDate, endDate, role } = req.query;
+  const query = {};
+  if (startDate)
+    query.createdAt = { ...query.createdAt, $gte: new Date(startDate) };
+  if (endDate) {
+    const date = new Date(endDate).setHours(23, 59, 59, 999);
+    query.createdAt = { ...query.createdAt, $lte: new Date(date) };
+  }
+  if (role) query.role = role;
   try {
-    const data = await User.find({});
+    const data = await User.find(query);
+
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet("Sheet 1");
 

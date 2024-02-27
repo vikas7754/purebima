@@ -44,14 +44,20 @@ export const getChartsData = () => {
   return axios.get(URL3 + "/charts");
 };
 
-export const exportApplications = () => {
-  return axios.get(URL3 + "/applications", {
-    responseType: "blob",
-  });
+export const exportApplications = (data) => {
+  return axios.get(
+    `${URL3}/applications?startDate=${data.startDate}&endDate=${data.endDate}&category=${data.category}`,
+    {
+      responseType: "blob",
+    }
+  );
 };
 
-export const exportUsers = () => {
-  return axios.get(URL3 + "/users", {
-    responseType: "blob",
-  });
+export const exportUsers = (data) => {
+  return axios.get(
+    `${URL3}/users?startDate=${data.startDate}&endDate=${data.endDate}&role=${data.role}`,
+    {
+      responseType: "blob",
+    }
+  );
 };
