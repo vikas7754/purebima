@@ -35,7 +35,7 @@ const createPage = async (req, res) => {
 
 const updatePage = async (req, res) => {
   try {
-    const page = await Page.findOne({ slug: req.body.slug });
+    const page = await Page.findOne({ _id: req.body.id });
     if (!page) {
       return res.status(404).json("Page not found");
     }

@@ -1,5 +1,4 @@
 "use client";
-import Editor from "@/components/Editor";
 import styles from "./create.module.scss";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +7,8 @@ import { toast } from "react-toastify";
 import { createPage } from "@/services/page";
 import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 
 function CreatePage() {
   const { user, isLoggedIn } = useUser();

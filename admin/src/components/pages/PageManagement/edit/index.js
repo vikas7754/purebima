@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import { updatePage } from "@/services/page";
 import { toast } from "react-toastify";
-import Editor from "@/components/Editor";
 import styles from "../create/create.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 
 function EditPage({ data }) {
   const { user, isLoggedIn } = useUser();
@@ -21,7 +22,7 @@ function EditPage({ data }) {
     e.preventDefault();
     try {
       const payload = {
-        id: data.id,
+        id: data._id,
         title,
         slug: title.toLowerCase().replace(/ /g, "-"),
         showFaq,
@@ -47,7 +48,7 @@ function EditPage({ data }) {
     setContent(data.data.content);
     setShowFaq(data.showFaq);
     setShowTestimonial(data.showTestimonial);
-  }, [data]);
+  }, []);
   return (
     <>
       {isLoggedIn && user.role === "admin" ? (
