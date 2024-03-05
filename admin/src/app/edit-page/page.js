@@ -1,5 +1,5 @@
-import DynamicPage from "@/components/pages/DynamicPage";
 import Error404 from "@/components/pages/Error404";
+import EditPage from "@/components/pages/PageManagement/edit";
 
 async function page() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/page/home`, {
@@ -9,7 +9,7 @@ async function page() {
     return <Error404 />;
   }
   const data = await res.json();
-  return <DynamicPage page={data} />;
+  return <EditPage data={data} />;
 }
 
 export default page;

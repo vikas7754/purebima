@@ -31,8 +31,8 @@ const app = express();
 PORT = process.env.PORT || 8000;
 app.use(helmet());
 app.use(cors(corsOptions));
-app.use(bodyparser.urlencoded({ extended: false }));
-app.use(bodyparser.json());
+app.use(bodyparser.json({ limit: "10mb" }));
+app.use(bodyparser.urlencoded({ limit: "10mb", extended: true }));
 app.use(bodyparser.text({ type: "text/html" }));
 app.use(cookieparser());
 

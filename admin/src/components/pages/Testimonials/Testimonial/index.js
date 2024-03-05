@@ -28,7 +28,7 @@ function Testimonial({ testimonial, refresh }) {
     setUploading(true);
     try {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("upload", file);
       const { data } = await uploadImage(formData);
       console.log(data);
       setImage(data.url);

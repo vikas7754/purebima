@@ -1,0 +1,52 @@
+{
+  "title": "Navbar",
+  "slug": "nav",
+  "type": "component",
+  "showFaq": false,
+  "showTestimonial": false,
+  "data": {
+    "logo": "https://res.cloudinary.com/freecodez/image/upload/v1709107596/images/pi2ke620vasocmwez2pp.webp",
+    "menus": [
+      {
+        "name": "Home",
+        "link": "/"
+      },
+      {
+        "name": "About Us",
+        "link": "/about-us"
+      },
+      {
+        "name": "Insurance Products",
+        "subMenus": [
+          {
+            "name": "Two Wheeler Insurance",
+            "link": "/two-wheeler-insurance"
+          },
+          {
+            "name": "Car Insurance",
+            "link": "/car-insurance"
+          },
+          {
+            "name": "Health Insurance",
+            "link": "/health-insurance"
+          },
+          {
+            "name": "View More",
+            "link": "/view-more"
+          }
+        ]
+      },
+      {
+        "name": "Become our POSP",
+        "link": "/become-our-posp"
+      }
+    ]
+  },
+  "createdAt": {
+    "$date": "2024-02-27T22:44:33.208Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-27T23:41:09.717Z"
+  },
+  "__v": 0
+}

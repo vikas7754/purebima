@@ -21,12 +21,12 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={"light"}>
           <Navbar />
-          <NextTopLoader
+          {/* <NextTopLoader
             color="red"
             height={2}
             shadow="none"
             showSpinner={false}
-          />
+          /> */}
           <ToastContainer
             position="top-center"
             closeOnClick

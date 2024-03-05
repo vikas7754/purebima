@@ -12,6 +12,6 @@ router.get("/", getTestimonials);
 router.post("/", auth, roleAuth, createTestimonial);
 router.put("/:id", auth, roleAuth, updateTestimonial);
 router.delete("/:id", auth, roleAuth, deleteTestimonial);
-router.post("/upload-img", auth, roleAuth, uploadImage);
+router.post("/upload-img", uploadImage);
 
 module.exports = router;

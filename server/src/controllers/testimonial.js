@@ -53,12 +53,10 @@ const deleteTestimonial = async (req, res) => {
 };
 
 const uploadImage = async (req, res) => {
-  upload.single("image")(req, res, async (err) => {
+  upload.single("upload")(req, res, async (err) => {
     if (err) return res.status(500).json({ message: err.message });
     try {
-      const buffer = await sharp(req.file.buffer)
-        .resize({ width: 250, height: 250, fit: "cover" })
-        .toBuffer();
+      const buffer = await sharp(req.file.buffer).toBuffer();
       const url = await uploadImageToCloudinary(buffer);
       return res.status(200).json({ url });
     } catch (err) {

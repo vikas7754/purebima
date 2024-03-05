@@ -393,4 +393,7 @@ input:-webkit-autofill:active {
 
 .ck-editor__editable {
   min-height: 350px !important;
+  a {
+    pointer-events: none;
+  }
 }

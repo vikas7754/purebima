@@ -8,6 +8,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import useUser from "@/redux/hooks/useUser";
 import LoginPage from "@/components/LoginSignup";
 import dynamic from "next/dynamic";
+import CodeEditor from "@/components/CodeEditor";
 const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 
 function EditPage({ data }) {
@@ -84,7 +85,11 @@ function EditPage({ data }) {
                 <label htmlFor="testimonial">Show Testimonial</label>
               </div>
             </div>
-            <Editor onChange={setContent} value={content} />
+            {data.type === "page" ? (
+              <Editor onChange={setContent} value={content} />
+            ) : (
+              <CodeEditor code={content} onChange={setContent} />
+            )}
             <div className={styles.submit}>
               <button className={"btn-primary"} onClick={handleSubmit}>
                 {publishing ? (
