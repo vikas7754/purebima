@@ -58,7 +58,7 @@ const uploadImage = async (req, res) => {
     try {
       const buffer = await sharp(req.file.buffer).toBuffer();
       const url = await uploadImageToCloudinary(buffer);
-      return res.status(200).json({ url });
+      return res.status(200).json({ url, link: url });
     } catch (err) {
       return res.status(500).json({ message: err.message });
     }

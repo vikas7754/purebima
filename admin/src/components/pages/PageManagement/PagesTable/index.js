@@ -80,9 +80,9 @@ function PagesTable({ pages }) {
                 {new Date(page.updatedAt).toDateString()}
               </td>
               <td data-label="Actions" className={styles.actions}>
-                <Link href={`/edit-page/${page.slug}`} className={styles.edit}>
+                <a href={`/edit-page/${page.slug}`} className={styles.edit}>
                   Edit
-                </Link>
+                </a>
                 {page.type === "page" && (
                   <button
                     className={styles.delete}

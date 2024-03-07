@@ -1,95 +1,19 @@
 .footer {
   background: #2a2a2a;
   color: #fff;
-  p,
-  a {
-    color: #fff;
-  }
-}
-
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  > div > p {
-    text-align: center;
-    opacity: 0.8;
-    font-size: 15px;
-  }
-}
-
-.content {
-  display: flex;
-  gap: 20px;
-  > div {
-    flex: 1;
-    display: flex;
-    gap: 20px;
-    > div {
-      flex: 1;
-    }
-  }
-  h3 {
-    width: fit-content;
-    margin: 5px 0;
-    border-bottom: 2px solid var(--primary);
-    padding: 3px 0;
-  }
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    li {
-      a {
-        display: block;
-        opacity: 0.7;
-        color: #fff;
-        text-decoration: none;
-        transition: 0.3s;
-        padding: 7px 0;
-        &:hover {
-          color: var(--primary);
-          opacity: 1;
-          transform: translateX(5px);
-        }
-      }
-    }
-  }
   p {
-    opacity: 0.8;
+    color: #ffffffe2;
   }
-}
-
-.getInTouch {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
   a {
+    text-wrap: nowrap;
     color: #fff;
-    opacity: 0.8;
-    transition: 0.3s;
     text-decoration: none;
-    margin-left: 5px;
+    transition: all 0.3s ease-in-out;
     &:hover {
-      color: var(--primary);
-      opacity: 1;
+      color: var(--primary) !important;
     }
   }
-}
-
-@media screen and (max-width: 1025px) {
-  .content {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .content > div {
-    flex-direction: column;
+  a:visited {
+    color: unset;
   }
 }
