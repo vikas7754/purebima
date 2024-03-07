@@ -7,7 +7,7 @@ import { getUser } from "@/services/user";
 import { getPage } from "@/services/page";
 // import bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+import("bootstrap/dist/js/bootstrap.bundle.min");
 
 function Navbar() {
   const [content, setContent] = useState("");

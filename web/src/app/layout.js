@@ -5,8 +5,9 @@ import "@/styles/editor.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ReduxProvider from "@/redux/ReduxProvider";
 import NextTopLoader from "nextjs-toploader";
-import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import dynamic from "next/dynamic";
+const Navbar = dynamic(() => import("@/components/navbar"), { ssr: false });
 
 export const metadata = {
   title:
@@ -27,12 +28,12 @@ export default function RootLayout({ children }) {
         </head>
         <body className={"light"}>
           <Navbar />
-          {/* <NextTopLoader
+          <NextTopLoader
             color="red"
             height={2}
             shadow="none"
             showSpinner={false}
-          /> */}
+          />
           <ToastContainer
             position="top-center"
             closeOnClick

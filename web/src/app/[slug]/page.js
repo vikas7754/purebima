@@ -24,10 +24,13 @@ async function page({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/page/${params.slug}`,
     { cache: "no-store" }
   );
+
   if (!res.ok) {
     return <Error404 />;
   }
+
   const data = await res.json();
+
   return <DynamicPage page={data} />;
 }
 
