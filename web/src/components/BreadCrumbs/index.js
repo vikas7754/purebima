@@ -11,7 +11,7 @@ function BreadCrumbs({ links = [], title, image }) {
       <div className={styles.title}>
         <div className={styles.wrapper}>
           {image && (
-            <Image
+            <img
               src={image}
               alt={title}
               width={100}

@@ -5,8 +5,8 @@
   --gray: #787878;
   --green: #00e641;
   --yellowgreen: rgb(119, 255, 0);
-  --text: #fafafe;
-  --text-dim: rgba(255, 255, 255, 0.7);
+  --text: #e0e0e0;
+  --text-dim: rgba(255, 255, 255, 0.6);
   --light: #ffffff;
   --dark: #121316;
   --bg: #121316;
@@ -35,7 +35,7 @@ body.light {
   --primary: #0068ff;
   --secondary: #e6e6e6;
   --bg: #ffffff;
-  --text: #121316;
+  --text: #7a7a7a;
   --text-dim: rgba(18, 19, 22, 0.65);
   --gray: #525252;
   --green: rgb(0, 163, 46);
@@ -47,6 +47,7 @@ body.light {
 body {
   transition: background 0.3s ease;
   line-height: 1.5;
+  color: #7a7a7a;
 }
 input {
   outline: none;
@@ -66,6 +67,16 @@ h3,
 ol,
 ul {
   margin: unset !important;
+}
+h2 {
+  color: #404040;
+}
+a,
+a:visited,
+li,
+p,
+div {
+  color: #7a7a7a;
 }
 
 img {

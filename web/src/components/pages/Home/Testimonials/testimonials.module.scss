@@ -4,6 +4,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 30px 20px;
+  color: #ffffffe1;
   h2 {
     color: var(--text);
     font-family: "Poppins", Sans-serif;
@@ -29,12 +30,17 @@
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.8;
+    color: #ffffffe8;
   }
 }
 
 .content {
   display: flex;
   gap: 10px;
+  h3,
+  p {
+    color: #ffffffe8;
+  }
 }
 
 .image {
