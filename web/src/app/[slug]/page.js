@@ -3,7 +3,7 @@ import Error404 from "@/components/pages/Error404";
 
 export async function generateMetadata({ params }) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/page/${params.slug}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/page/meta/${params.slug}`,
     { cache: "no-store" }
   );
   if (!res.ok) {

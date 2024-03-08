@@ -12,6 +12,7 @@ import "froala-editor/css/plugins/code_view.min.css";
 // import bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import "swiper/css";
 
 function CodeEditor({ code, onChange }) {
   const [content, setContent] = useState("");

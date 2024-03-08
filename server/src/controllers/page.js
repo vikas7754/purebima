@@ -22,6 +22,17 @@ const getPage = async (req, res) => {
     return res.status(500).json(err);
   }
 };
+const getPageMetadata = async (req, res) => {
+  try {
+    const page = await Page.findOne({ slug: req.params.slug }).select("-data");
+    if (!page) {
+      return res.status(404).json("Page not found");
+    }
+    return res.status(200).json(page);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
 
 const createPage = async (req, res) => {
   try {
@@ -69,4 +80,5 @@ module.exports = {
   updatePage,
   deletePage,
   getPage,
+  getPageMetadata,
 };

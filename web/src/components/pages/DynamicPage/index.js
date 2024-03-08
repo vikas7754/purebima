@@ -4,6 +4,7 @@ import BreadCrumbs from "@/components/BreadCrumbs";
 import Faqs from "../Home/Faqs";
 import Testimonials from "../Home/Testimonials";
 import About from "../Home/About";
+import "swiper/css";
 
 function DynamicPage({ page }) {
   return (
@@ -12,11 +13,13 @@ function DynamicPage({ page }) {
         <BreadCrumbs
           title={page.title}
           links={[{ title: page.title, href: `/${page.slug}` }]}
+          image={page?.data?.image}
         />
       )}
-      <div className="wrapper">
-        <div dangerouslySetInnerHTML={{ __html: page.data.content }} />
-      </div>
+      <div
+        dangerouslySetInnerHTML={{ __html: page.data.content }}
+        suppressHydrationWarning
+      />
       {page.showTestimonial && <Testimonials />}
       {page.showFaq && <Faqs />}
       {page.slug === "home" && <About />}

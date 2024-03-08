@@ -1,3 +1,10 @@
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
 .wrap {
   color: rgba(0, 0, 0, 0.7);
 }
@@ -60,4 +67,134 @@
       text-align: center;
     }
   }
+}
+
+.benefits-container {
+  position: relative;
+  width: 100%;
+  background-image: url("https://www.merabatua.com/pb1/wp-content/uploads/2023/09/SL-113022-54210-23-scaled.jpg");
+  background-position: 0px -17px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.benefits-container h2 {
+  color: var(--text);
+  font-family: "Poppins", Sans-serif;
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.content {
+  position: relative;
+  z-index: 1;
+}
+.bgOverlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #fff;
+  opacity: 0.75;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.benefit {
+  flex: 1 1 calc(50% - 30px);
+  display: flex;
+  padding: 10px;
+  border-left: 8px solid var(--primary);
+  box-shadow: 8px 10px 10px -2px rgba(210, 210, 210, 0.5);
+}
+.benefit i {
+  font-size: 50px;
+  color: var(--primary);
+}
+.benefit > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.benefit > div h3 {
+  color: var(--text);
+  font-family: "Poppins", Sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.benefit > div p {
+  color: var(--text-dim);
+}
+@media screen and (max-width: 768px) {
+  .benefit {
+    flex: 1 1 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.app_container {
+  background: #eff5ff;
+}
+
+.app_container .left {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app_container .row > div,
+.partners-swiper {
+  box-shadow: 8px 10px 10px -2px rgba(210, 210, 210, 0.5);
+}
+
+.app_container .left h3 {
+  color: var(--text);
+  font-family: "Poppins", Sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.app_container .left img {
+  max-width: unset !important;
+}
+
+.app_container .left ul {
+  padding-left: 20px;
+}
+
+.links {
+  display: flex;
+  gap: 15px;
+}
+.links img {
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .app_container .left {
+    padding: 20px;
+  }
+}
+.app-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.app-right img {
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+.partners img {
+  object-fit: contain;
 }
