@@ -16,10 +16,12 @@ function DynamicPage({ page }) {
           image={page?.data?.image}
         />
       )}
-      <div
-        dangerouslySetInnerHTML={{ __html: page.data.content }}
-        suppressHydrationWarning
-      />
+      <div className={page.type === "page" ? "wrapper" : ""}>
+        <div
+          dangerouslySetInnerHTML={{ __html: page.data.content }}
+          suppressHydrationWarning
+        />
+      </div>
       {page.showTestimonial && <Testimonials />}
       {page.showFaq && <Faqs />}
       {page.slug === "home" && <About />}
