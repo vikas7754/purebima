@@ -38,7 +38,7 @@ function Editor({ onChange, value }) {
               },
               extraPlugins: [RenderStyleElements],
               simpleUpload: {
-                uploadUrl: "http://localhost:8000/api/testimonial/upload-img",
+                uploadUrl: `${process.env.NEXT_PUBLIC_API_URL}/testimonial/upload-img`,
               },
             }}
             data={value}

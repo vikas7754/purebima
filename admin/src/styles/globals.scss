@@ -397,3 +397,7 @@ input:-webkit-autofill:active {
     pointer-events: none;
   }
 }
+
+div[style="z-index:9999;width:100%;position:relative"] {
+  display: none !important;
+}

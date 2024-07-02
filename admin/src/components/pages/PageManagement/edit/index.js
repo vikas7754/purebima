@@ -21,6 +21,8 @@ function EditPage({ data }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const regex = /<p[^>]*data-f-id="pbf"[^>]*>.*?<\/p>/gi;
+    const updatedContent = content.replace(regex, "");
     try {
       const payload = {
         id: data._id,
@@ -29,7 +31,7 @@ function EditPage({ data }) {
         showFaq,
         showTestimonial,
         data: {
-          content,
+          content: updatedContent,
         },
       };
       setPublishing(true);
