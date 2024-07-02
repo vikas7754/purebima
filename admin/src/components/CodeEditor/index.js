@@ -51,6 +51,7 @@ function CodeEditor({ code, onChange }) {
           "aside",
           "audio",
           "b",
+          "big",
           "base",
           "bdi",
           "bdo",
