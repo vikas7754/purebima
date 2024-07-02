@@ -346,7 +346,8 @@ input:-webkit-autofill:active {
 }
 .wrapper {
   width: 100%;
-  max-width: 900px;
+  max-width: var(--max-width);
+  margin: auto;
   padding: 15px;
 }
 

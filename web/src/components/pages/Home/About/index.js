@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./about.module.scss";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 
 function About() {
   return (
@@ -14,18 +14,19 @@ function About() {
           </h2>
           <span>Reliable. Personable. Fast.</span>
           <p>
-            Start a fast, free auto insurance quote with Alico. We help you find
-            any insurance coverages that are right for you, so you're not paying
-            for anything you don't want!
+            Get a free insurance quote with PureBima. We help you find any
+            insurance coverages that are right for you, so you're not paying for
+            anything you don't want!
           </p>
           <p>
             Get a <big>insurance quote</big> - typically in 2 minutes or less.
-            Switch to Alico for an insurance policy from a brand you can trust.
+            Switch to PureBima for an insurance policy from a brand you can
+            trust.
           </p>
           <p>Facing any problem to get a quote!</p>
-          <a href="tel:+911234567890">
-            <FontAwesomeIcon icon={faPhoneAlt} />
-            <span>Call: +91 1234567890</span>
+          <a href="tel:+917042127003">
+            <FontAwesomeIcon icon={faPhoneVolume} />
+            <span>Call: +91 7042127003</span>
           </a>
         </div>
       </div>
