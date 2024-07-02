@@ -157,7 +157,6 @@ function Navbar() {
           </ul>
         </div>
         <div className={styles.right}>
-          <ThemeToggleButton />
           {user?.name ? (
             <div className={styles.login}>
               <span className={styles.user_name}>
