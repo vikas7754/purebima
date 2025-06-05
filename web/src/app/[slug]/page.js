@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   }
   const data = await res.json();
   return {
-    title: data.title + " - PureBima",
+    title: data.title,
     description: data.title,
   };
 }

@@ -1,0 +1,35 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PureBima",
+  "image": "https://res.cloudinary.com/purebima/image/upload/v1720610955/qh6t6yrpse9sacdhdsbm.jpg",
+  "@id": "",
+  "url": "https://www.purebima.com/",
+  "telephone": "+91-7042127003",
+  "priceRange": "0",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "717, 7th Floor, Tower B, Advant IT Park, Sector - 142",
+    "addressLocality": "Noida",
+    "postalCode": "201301",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "10:00",
+    "closes": "19:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/PureBima/",
+    "https://www.instagram.com/purebima/",
+    "https://www.linkedin.com/company/purebima/"
+  ]
+}
