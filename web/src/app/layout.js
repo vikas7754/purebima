@@ -27,10 +27,10 @@ export const metadata = {
     siteName: "PureBima",
     images: [
       {
-        url: "https://res.cloudinary.com/purebima/image/upload/v1720610955/qh6t6yrpse9sacdhdsbm.jpg",
+        url: "https://res.cloudinary.com/freecodez/image/upload/v1749149984/images/mk09wx7fxfxcpxo9jzvr.webp",
         width: 1200,
         height: 630,
-        alt: "PureBima - Best Insurance Companies in India",
+        alt: "Best Insurance Companies in India | PureBima",
       },
     ],
     locale: "en_IN",
@@ -43,7 +43,7 @@ export const metadata = {
     description:
       "Discover the best insurance companies in India offering trusted coverage, top customer service, and tailored plans for every need.",
     images: [
-      "https://res.cloudinary.com/purebima/image/upload/v1720610955/qh6t6yrpse9sacdhdsbm.jpg",
+      "https://res.cloudinary.com/freecodez/image/upload/v1749149984/images/mk09wx7fxfxcpxo9jzvr.webp",
     ],
   },
 };
