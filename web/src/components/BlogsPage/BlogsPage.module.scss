@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #000;
+  text-align: center;
+}
+
+.blogs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  > div {
+    flex: 1;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .blogs {
+    grid-template-columns: 1fr;
+  }
+}

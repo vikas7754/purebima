@@ -5,4 +5,5 @@ module.exports = (app) => {
   app.use("/api/testimonial", require("./testimonial"));
   app.use("/api/admin", require("./admin"));
   app.use("/api/page", require("./page"));
+  app.use("/api/blog", require("./blog"));
 };

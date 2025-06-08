@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 20px;
+  > h1 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #000;
+  }
+}
