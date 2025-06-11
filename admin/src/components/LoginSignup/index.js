@@ -9,7 +9,7 @@ function LoginPage() {
   return (
     <div className={styles.container} style={{ minHeight: "90vh" }}>
       <div className={styles.wrapper}>
-        <div className={styles.leftPanel}>
+        {/* <div className={styles.leftPanel}>
           <div>
             <div className={styles.title}>
               <h2>{toggle ? "Login Here" : "Signup Here"}</h2>
@@ -31,7 +31,8 @@ function LoginPage() {
         </div>
         <div className={styles.form_container}>
           {toggle ? <Login /> : <Signup />}
-        </div>
+        </div> */}
+        <Login />
       </div>
     </div>
   );

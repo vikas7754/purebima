@@ -86,9 +86,9 @@ function Login() {
             <FontAwesomeIcon icon={togglePassword ? faEye : faEyeSlash} />
           </i>
         </div>
-        <div className={styles.forgotPassword}>
+        {/* <div className={styles.forgotPassword}>
           <a href="/forgotPassword">Forgot Password</a>
-        </div>
+        </div> */}
         <div className={styles.submit}>
           <button type="submit">
             {loading ? "Please Wait" : "Submit for Login"}
@@ -96,8 +96,8 @@ function Login() {
           </button>
         </div>
       </form>
-      <div className={styles.or}>-------- OR --------</div>
-      <LoginWithGoogle />
+      {/* <div className={styles.or}>-------- OR --------</div>
+      <LoginWithGoogle /> */}
     </div>
   );
 }
