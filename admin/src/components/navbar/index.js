@@ -34,6 +34,10 @@ const menus = [
     name: "Pages",
     link: "/pages",
   },
+  {
+    name: "Blogs",
+    link: "/blogs",
+  },
 ];
 
 function Navbar() {
