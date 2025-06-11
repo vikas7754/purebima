@@ -18,8 +18,9 @@ cloudinary.config({
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://purebima.vercel.app",
-  "https://admin-purebima.vercel.app",
+  "https://purebima.com",
+  "https://www.purebima.com",
+  "https://admin.purebima.com",
 ];
 const corsOptions = {
   origin: allowedOrigins,
