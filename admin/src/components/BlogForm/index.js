@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./BlogForm.module.scss";
-import Editor from "../Editor";
 import { toast } from "react-toastify";
 import { createBlog, updateBlog } from "@/services/blog";
 import MediaInput from "./MediaInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 
 const BlogForm = ({ data, action = "create" }) => {
   const [publishing, setPublishing] = useState(false);
