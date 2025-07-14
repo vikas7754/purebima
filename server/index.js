@@ -21,6 +21,7 @@ const allowedOrigins = [
   "https://purebima.com",
   "https://www.purebima.com",
   "https://admin.purebima.com",
+  "http://admin.purebima.com",
 ];
 const corsOptions = {
   origin: allowedOrigins,

@@ -6,7 +6,6 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const MediaInput = ({ media, setFormdata, uploading, setUploading, index }) => {
-  console.log(uploading);
   const handleMediaChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
