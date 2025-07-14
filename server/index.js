@@ -23,16 +23,28 @@ const allowedOrigins = [
   "https://admin.purebima.com",
   "http://admin.purebima.com",
 ];
+// const corsOptions = {
+//   origin: allowedOrigins,
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// };
 const corsOptions = {
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
-  optionSuccessStatus: 200,
+  optionsSuccessStatus: 200,
 };
 
 const app = express();
 PORT = process.env.PORT || 8000;
 app.use(helmet());
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(bodyparser.json({ limit: "10mb" }));
 app.use(bodyparser.urlencoded({ limit: "10mb", extended: true }));
 app.use(bodyparser.text({ type: "text/html" }));
