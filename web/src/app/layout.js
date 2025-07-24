@@ -15,14 +15,14 @@ import organizationSchema from "@/schemas/organizationSchema.json";
 export const metadata = {
   title: {
     template: "%s | PureBima",
-    default: "Best Insurance Companies in India | PureBima",
+    default: "Best Insurance Provider for Trusted Coverage | PureBima",
   },
   description:
-    "Discover the best insurance companies in India offering trusted coverage, top customer service, and tailored plans for every need.",
+    "Discover the best Insurance Provider for Trusted Coverage offering trusted coverage, top customer service, and tailored plans for every need.",
   openGraph: {
-    title: "Best Insurance Companies in India | PureBima",
+    title: "Best Insurance Provider for Trusted Coverage | PureBima",
     description:
-      "Discover the best insurance companies in India offering trusted coverage, top customer service, and tailored plans for every need.",
+      "Discover the best Insurance Provider for Trusted Coverage offering trusted coverage, top customer service, and tailored plans for every need.",
     url: "https://www.purebima.com",
     siteName: "PureBima",
     images: [
@@ -30,7 +30,7 @@ export const metadata = {
         url: "https://res.cloudinary.com/freecodez/image/upload/v1749149984/images/mk09wx7fxfxcpxo9jzvr.webp",
         width: 1200,
         height: 630,
-        alt: "Best Insurance Companies in India | PureBima",
+        alt: "Best Insurance Provider for Trusted Coverage | PureBima",
       },
     ],
     locale: "en_IN",
@@ -39,9 +39,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     url: "https://www.purebima.com",
-    title: "Best Insurance Companies in India | PureBima",
+    title: "Best Insurance Provider for Trusted Coverage | PureBima",
     description:
-      "Discover the best insurance companies in India offering trusted coverage, top customer service, and tailored plans for every need.",
+      "Discover the best Insurance Provider for Trusted Coverage offering trusted coverage, top customer service, and tailored plans for every need.",
     images: [
       "https://res.cloudinary.com/freecodez/image/upload/v1749149984/images/mk09wx7fxfxcpxo9jzvr.webp",
     ],
